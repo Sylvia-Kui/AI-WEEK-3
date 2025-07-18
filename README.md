@@ -36,5 +36,32 @@ Ease of use for beginners.
 Community support.
 -Both libraries have vibrant communities, but TensorFlow benefits from Google’s backing and a broader ecosystem for deployment and scaling.
 
+PART 3: ETHICS & OPTIMIZATION (10%)
+1. Ethical Considerations
 
+Identify potential biases in your MNIST or Amazon Reviews model. How could tools like TensorFlow Fairness Indicators or spaCy’s rule-based systems mitigate these biases?
+ Potential Biases
+ MNIST Model
+MNIST consists of handwritten digits, and its biases typically stem from:
+- Sampling bias: Digits may be more representative of certain age groups or writing styles.
+- Style sensitivity: If the model struggles with slanted or messy handwriting, it may unfairly penalize some users.
+- Device differences: Input images from newer devices might differ in resolution or contrast.
+   Amazon Reviews Model
+This model works with natural language and carries more nuanced risks:
+- Sentiment bias: The model might associate certain words with positive/negative sentiment unfairly due to skewed training data.
+- Demographic bias: Language patterns from different regions, dialects, or cultures may not be equally represented.
+- Topic bias: Reviews in certain product categories (e.g. tech vs. beauty) may be overrepresented, influenci
 
+ Mitigation Tools
+1. TensorFlow Fairness Indicators
+Ideal for models like Amazon Reviews that work with structured outputs:
+- Provides sliced evaluation by group (e.g., gender or dialect).
+- Highlights performance disparities in metrics like precision and recall.
+- Integrates easily into TensorFlow pipelines for automated fairness monitoring.
+   Example: You could segment reviews by reviewer location and detect if accuracy drops significantly for one region—pinpointing demographic bias.
+2. spaCy’s Rule-Based Systems
+While not a fairness tool per se, it helps mitigate bias in language preprocessing:
+- Allows crafting custom tokenization rules, reducing misinterpretation of dialects or idioms.
+- Enables detection and normalization of identity-related terms to prevent their over-weighting.
+- Helps annotate data more precisely, supporting fairer training and evaluation.
+   Example: If your review model misinterprets informal Kenyan slang, spaCy rules could help normalize it without losing nuance.
